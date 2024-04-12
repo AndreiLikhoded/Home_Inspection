@@ -7,17 +7,11 @@ create table if not exists Service_Order (
     created_at timestamp not null
     );
 
-create table if not exists Order (
+create table if not exists Orders (
     id identity,
     service_order bigint not null,
     service_order_key bigint not null,
     ordered_at timestamp not null
-    );
-
-create table if not exists Item_Ref (
-    item varchar(4) not null,
-    order bigint not null,
-    order_key bigint not null
     );
 
 create table if not exists Item (
@@ -27,7 +21,5 @@ create table if not exists Item (
     );
 
 
-alter table Order
+alter table Orders
     add foreign key (service_order) references Service_Order(id);
-alter table Item_Ref
-    add foreign key (item) references Item(id);
